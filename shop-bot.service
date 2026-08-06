@@ -1,0 +1,17 @@
+[Unit]
+Description=Telegram Shop Bot
+After=network.target
+
+[Service]
+Type=simple
+# Замените на пользователя, от имени которого будет работать бот
+User=botuser
+# Замените на реальный путь к проекту на сервере
+WorkingDirectory=/opt/shop-bot
+ExecStart=/opt/shop-bot/venv/bin/python /opt/shop-bot/bot.py
+Restart=on-failure
+RestartSec=5
+EnvironmentFile=/opt/shop-bot/.env
+
+[Install]
+WantedBy=multi-user.target
